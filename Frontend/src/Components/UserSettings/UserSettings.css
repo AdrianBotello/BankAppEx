@@ -1,0 +1,19 @@
+.bigCont {
+    height: 500px;
+    width: 1000px;
+    background-color: #fafafa;
+}
+.settingsCont{
+    display: flex;
+}
+.formulario{
+    margin-top: 50px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+input{
+    margin-bottom: 10px;
+    width: 350px;
+    height: 30px;
+}
