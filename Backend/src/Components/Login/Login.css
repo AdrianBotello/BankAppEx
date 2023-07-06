@@ -1,0 +1,32 @@
+﻿body {
+    margin-top: 13%;
+    background-color: #fafafa;
+    display: block;
+}
+.draw-border {
+    border-color: #f2f2f2;
+    height: 40px;
+    width: 25%;
+    border-radius: 4px;
+    margin-top: 1%;
+}
+
+    .draw-border:focus {
+        border-color: #3f50b5;
+    }
+
+button {
+    height: 40px;
+    width: 25.3%;
+    border-color: #3f50b5;
+    background-color: #3f50b5;
+    color: white;
+    border-radius: 4px;
+    margin-top: 1%;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 25px;
+    font-family: Arial;
+}
