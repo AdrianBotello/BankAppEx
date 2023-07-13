@@ -21,11 +21,10 @@ public class AccountDaoService {
             "boot2",63254875);
 
     static {
-        accounts.add( new Account(users.get(0),20232,1000.95));
-        accounts.add( new Account(users.get(1),20233,1000.95));
-        accounts.add( new Account(users.get(2),20234,1000.95));
-        accounts.add( new Account(users.get(3),20235,1000.95));
-
+        accounts.add( new Account(users.get(0),20232,1000.95,"caixabank", "madrid"));
+        accounts.add( new Account(users.get(1),20233,1000.95,"IberCaja", "madrid"));
+        accounts.add( new Account(users.get(2),20234,1000.95,"BBVA", "madrid)"));
+        accounts.add( new Account(users.get(3),20235,1000.95,"Santander", "madrid"));
     }
 
     public Account findOneAccount(int accountNumber) {
@@ -42,7 +41,7 @@ public class AccountDaoService {
     }
 
     public void deleteByAccountNumber(int accountNumber){
-        Predicate<? super Account> predicate = account -> account.getAccountNumber()==accountNumber;
+        Predicate<? super Account> predicate = account -> account.getAccountNumber()==(accountNumber);
         accounts.removeIf(predicate);
     }
 }
