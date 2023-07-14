@@ -11,14 +11,13 @@ import java.util.function.Predicate;
 public class AccountDaoService {
 
     static UserDaoService userDaoService = new UserDaoService();
-    private  static List<Account> accounts = new ArrayList<>();
-    private static List<User> users = userDaoService.findAll();
-    private static int usersCount = 0;
+    final private  static List<Account> accounts = new ArrayList<>();
+    final private static List<User> users = userDaoService.findAll();
 
-    private static int accCount = 0;
-
-    static User ema = new User("Emmanuel","ortega","emmatega@yahoo.com", (++usersCount),
-            "boot2",63254875);
+//    private static int usersCount = 0;
+//
+//    static User ema = new User("Emmanuel","ortega","emmatega@yahoo.com", (++usersCount),
+//            "boot2",63254875);
 
     static {
         accounts.add( new Account(users.get(0),20232,1000.95,"caixabank", "madrid"));
@@ -38,6 +37,12 @@ public class AccountDaoService {
     public Account save(Account account){
         accounts.add(account);
         return account;
+    }
+
+    public List<Account> findByUser(String email){
+        Predicate<? super Account> predicate = account -> account.getOwnerName().getEmail().equals(email);
+        return accounts.stream().filter(predicate).toList();
+
     }
 
     public void deleteByAccountNumber(int accountNumber){

@@ -33,6 +33,17 @@ public class AccountResource {
         return account;
     }
 
+    @CrossOrigin(origins = "https://localhost:3000")
+    @GetMapping("/bankAccounts/getbyuser/{userEmail}")
+    public List<Account> retireveFromUser(@PathVariable String userEmail){
+        List<Account> listAccount = service.findByUser(userEmail);
+        if(listAccount.size() ==0) {
+            throw new UserNotFoundException("The account "+userEmail+" don't have any accounts");
+        }
+        return listAccount;
+
+    }
+
     @DeleteMapping("/bankaccounts/{accountNumber}")
     public void deleteAnAccount(@PathVariable int accountNumber){
         service.deleteByAccountNumber(accountNumber);
