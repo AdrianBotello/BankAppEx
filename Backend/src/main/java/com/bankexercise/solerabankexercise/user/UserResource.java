@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserResource {
 
     private UserDaoService service;

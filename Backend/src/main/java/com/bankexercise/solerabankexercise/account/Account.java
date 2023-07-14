@@ -6,11 +6,15 @@ public class Account {
     private User OwnerName;
     private long accountNumber;
     private double balance;
+    private String bankName;
+    private String bankLocation;
 
-    public Account(User ownerName, long accountNumber, double balance) {
+    public Account(User ownerName, long accountNumber, double balance, String bankName, String bankLocation) {
         this.OwnerName = ownerName;
         this.accountNumber = accountNumber;
         this.balance = balance;
+        this.bankName = bankName;
+        this.bankLocation = bankLocation;
     }
 
     public User getOwnerName() {
@@ -35,6 +39,33 @@ public class Account {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getBankLocation() {
+        return bankLocation;
+    }
+
+    public void setBankLocation(String bankLocation) {
+        this.bankLocation = bankLocation;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "OwnerName=" + OwnerName +
+                ", accountNumber=" + accountNumber +
+                ", balance=" + balance +
+                ", bankName='" + bankName + '\'' +
+                ", bankLocation='" + bankLocation + '\'' +
+                '}';
     }
 }
 
