@@ -1,6 +1,8 @@
 import logo from '../../images/logo192.png';
 import './SignUp.css';
 
+import { useFetch } from '../../useFetch';
+
 export function SignUp() {
     //<button onClick={SignUpSendInfo}>SIGN UP</button>
     
@@ -17,11 +19,15 @@ export function SignUp() {
                     <br/>
 
                     <input type="text" name="lstName" id="lstName" placeholder="Last Name *" className="draw-border"></input>
-                    <br/>
-                    <input type="text" name="email" id="email" placeholder="Username *" className="draw-border"></input>
-                    <br/>
+                    <br />
+                    <input type="text" name="usrName" id="usrName" placeholder="User Name *" className="draw-border"></input>
+                    <br />
+                    <input type="text" name="email" id="email" placeholder="email *" className="draw-border"></input>
+                    <br />
+                    <input type="number" name="phone" id="phone" placeholder="Phone number" className="draw-border"></input>
+                    <br />
                     <input type="password" name="pass" id="pass" placeholder="Password *" className="draw-border"></input>
-                    <br/>
+                    <br />
 
                     <input type="password" name="repPass" id="repPass" placeholder="Confirm Password *" className="draw-border"></input>
                     <br/>
@@ -39,6 +45,8 @@ export function SignUp() {
 function SignUpSendInfo() {
     var fstName = document.getElementById("fstName").value;
     var lstName = document.getElementById("lstName").value;
+    var usrNmae = document.getElementById("usrName").value;
+    var phone = document.getElementById("usrName").value;
     var email = document.getElementById("email").value;
     var pass = document.getElementById("pass").value;
     var repPass = document.getElementById("repPass").value;
@@ -53,8 +61,30 @@ function SignUpSendInfo() {
     }
     if (!validateEmail(email)) {
         return window.alert("Incorrect email!");
-
     }
+    var url = "http://localhost:3000/signup"
+    const user = {
+        firstName: fstName,
+        secondName: lstName,
+        userName: usrNmae,
+        email: email,
+        phone: phone,
+        password: pass
+    }
+    console.log(user);
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));  
+    //{"firstName":"Dojo","secondName":"kata","email":"solera@solera.com","phone":63254875,"password":"bootcamp5","id":2}
+    window.location.href = "/";
+    
 }
 
 function validateName(name) {

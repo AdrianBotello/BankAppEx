@@ -1,0 +1,22 @@
+.createButt {
+    width: 100px;
+}
+
+h3 {
+    color: #3f50b5;
+}
+
+.delButton {
+    background-color: white;
+    color: black;
+    width: 100px;
+}
+
+.bankContainer {
+    border-block-color: black;
+    width: 1000px;
+}
+
+table {
+    width: 1000px;
+}

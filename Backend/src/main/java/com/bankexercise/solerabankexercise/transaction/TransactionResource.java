@@ -10,6 +10,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 @RestController
+@RequestMapping("/transactions")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TransactionResource {
     private TransactionDaoService service;
 
