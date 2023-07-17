@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserResource {
 
     private UserDaoService service;
@@ -22,12 +21,14 @@ public class UserResource {
     }
 
     // GET /Users
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/users")
     public List<User> retrieveAllUsers(){
 
         return service.findAll();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id){
         User user =  service.findOne(id);
@@ -36,10 +37,12 @@ public class UserResource {
         }
         return user;
     }
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/users/login/{email}/{password}")
     public boolean login(@PathVariable String email, @PathVariable String password){
         return service.login(email, password);
     }
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/users/settings")
     public List<String> settings(User user){
         List<String> userinfo = new ArrayList<>();
@@ -53,12 +56,14 @@ public class UserResource {
         return userinfo;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable int id){
         service.deleteById(id);
     }
 
     //POST /users
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/signup")
     public ResponseEntity<User> createUser(@RequestBody User user){
         User savedUser = service.save(user);

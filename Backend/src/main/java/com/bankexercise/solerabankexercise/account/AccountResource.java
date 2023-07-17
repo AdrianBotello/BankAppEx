@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bankaccounts")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AccountResource {
 
     private AccountDaoService service;
@@ -20,10 +19,12 @@ public class AccountResource {
         this.service = service;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/bankaccounts")
     public List<Account> retrieveAllAccounts(){
         return service.findAll();
     }
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/bankaccounts/{accountNumber}")
     public Account retrieveAnAccount(@PathVariable int accountNumber){
         Account account =  service.findOneAccount(accountNumber);
@@ -33,7 +34,7 @@ public class AccountResource {
         return account;
     }
 
-    @CrossOrigin(origins = "https://localhost:3000")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/bankAccounts/getbyuser/{userEmail}")
     public List<Account> retireveFromUser(@PathVariable String userEmail){
         List<Account> listAccount = service.findByUser(userEmail);
@@ -44,10 +45,12 @@ public class AccountResource {
 
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/bankaccounts/{accountNumber}")
     public void deleteAnAccount(@PathVariable int accountNumber){
         service.deleteByAccountNumber(accountNumber);
     }
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/bankaccounts")
     public ResponseEntity<User> createUser(@RequestBody Account account){
         Account savedAccount = service.save(account);

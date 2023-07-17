@@ -99,7 +99,7 @@ export function UserInterface() {
         )
     //}
 }
-function getNameComp(fstName, lstName) {
+export function getNameComp(fstName, lstName) {
     var name = fstName + " " + lstName.charAt();
     return name;
 }
